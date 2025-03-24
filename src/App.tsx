@@ -1,14 +1,15 @@
-import './index.css';
-import { Button } from './components/ui/Button'
-import { PlusIcon } from './components/icons/plusIcons';
+import { Button } from "./components/Button";
+import { Card } from "./components/Card";
+import { PlusIcon } from "./icons/PlusIcon";
+import { ShareIcon } from "./icons/ShareIcon";
 
-function App() {
-  return (
+export default function App(){
+  return(
     <div>
-      <Button startIcon={<PlusIcon/>} size='sm' variant='primary' text='Share'/>
-      <Button size='sm' variant='secondary' text='Add Content'/>
+      <Button variant="secondary" text="Share Brain" startIcon={<ShareIcon/>}/>
+      <Button variant="primary" text="Add Content" startIcon={<PlusIcon/>}/>
+      <Card type="twitter" link="https://x.com/doodlextom/status/1902625097506001369" title="Personal Branding"/>
+      <Card type="youtube" link="https://youtu.be/Lv8BD8xefJs?si=wPtvuoABKuzsoxqi" title="How I Work 10 Hours Daily"/>
     </div>
   )
 }
-
-export default App
