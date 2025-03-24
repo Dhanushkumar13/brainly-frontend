@@ -25,7 +25,7 @@ export function Card({title, link, type} : CardProps){
 
     return (
         <div>
-            <div className="p-4 bg-white rounded-md shadow-md border-gray-200 border max-w-72">
+            <div className="p-4 bg-white rounded-md shadow-md border-gray-200 border max-w-72 min-h-48 min-w-72">
                 <div className="flex justify-between ">
                     <div className="flex items-center text-sm"> 
                         <div className="text-gray-500 pr-2">
@@ -44,16 +44,19 @@ export function Card({title, link, type} : CardProps){
                         </div>
                     </div>
                 </div>
-                <div className="relative w-full pt-[54.25%] mt-2">
+                <div className="w-full mt-4">
                     {type === "youtube" && 
-                        <iframe className="absolute top-0 left-0 w-full h-full rounded-md" width="560" height="315" src={getYoutubeEmbedUrl(link)} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        <iframe className="top-0 left-0 w-full rounded-md" width="560" height="315" src={getYoutubeEmbedUrl(link)} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     }
                     {type === "twitter" && 
-                        <blockquote className="twitter-tweet" style={{
-                        }}><a href={link.replace('x.com','twitter.com')}></a></blockquote>
+                        <blockquote className="twitter-tweet top-0">
+                            <a  href={link.replace('x.com','twitter.com')}></a>
+                        </blockquote>
                     }
                 </div>
             </div>
         </div>
     )
 }
+
+//-m-[54.25%]
