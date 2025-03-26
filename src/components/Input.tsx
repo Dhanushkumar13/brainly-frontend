@@ -1,9 +1,10 @@
-export function Input({onChangeXIcon, placeholder}: {
+export function Input({reference, placeholder}: {
     placeholder: string;
-    onChangeXIcon: () => void}){
+    reference?: any;
+   }){
     return(
         <div>
-            <input placeholder={placeholder} type='text' className="px-4 py-4 border rounded m-2" onChange={onChangeXIcon}>
+            <input ref={reference} placeholder={placeholder} type='text' className="px-4 py-4 border rounded m-2">
             </input>
         </div>
     )

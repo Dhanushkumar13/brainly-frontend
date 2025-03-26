@@ -3,22 +3,23 @@ import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
-import { data, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export function Signup(){
+export function Signin(){
     const usernameRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>();
     const navigate = useNavigate();
-     async function signup(){
+     async function signin(){
         const username = usernameRef.current?.value;
         console.log(usernameRef.current)
         const password = passwordRef.current?.value;
-        await axios.post(`${BACKEND_URL}/api/v1/signup`, {
+        const response = await axios.post(`${BACKEND_URL}/api/v1/signin`, {
             username,
             password
         })
-        alert('You have signed up!');
-        navigate('/signin');
+        const jwt = response.data.token;
+        localStorage.setItem('token', jwt);
+        navigate('/dashboard')
     }
     return(
         <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
@@ -26,7 +27,7 @@ export function Signup(){
                 <Input reference={usernameRef} placeholder="Username"/>
                 <Input reference={passwordRef} placeholder="Password"/>
                 <div className="flex justify-center pt-4"> 
-                    <Button onClick={signup} variant="primary" text="Signup" fullWidth={true}/>
+                    <Button onClick={signin} variant="primary" text="Signup" fullWidth={true}/>
                 </div>
             </div>
         </div>
